@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Profil - Latihan 4</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        /* Navbar */
+        header {
+            background-color: #0078D7;
+        }
+        nav {
+            display: flex;
+            padding: 10px 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        nav a:hover, nav a.active {
+            background-color: #005A9E;
+            border-radius: 4px;
+        }
+
+        /* Container Utama */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            display: flex;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        /* Kolom Kiri */
+        .profile-sidebar {
+            flex: 1;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #0078D7;
+            margin-bottom: 20px;
+        }
+        .profile-sidebar h2 {
+            margin: 10px 0 5px 0;
+            color: #2c3e50;
+        }
+        .profile-sidebar p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            text-align: left;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .contact-info p {
+            margin: 10px 0;
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        /* Kolom Kanan (Konten Portofolio) */
+        .portfolio-content {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            color: #0078D7;
+            border-bottom: 2px solid #0078D7;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .card p {
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Skills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .skills-list li {
+            background-color: #e1f0fa;
+            color: #0078D7;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #ccc;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <!-- Link kembali ke halaman utama (Latihan-3) -->
+            <a href="Latihan-3.html">Home</a>
+            <a href="#" class="active">Profile</a>
+            <a href="#">Contact US</a>
+        </nav>
+    </header>
+
+    <!-- Layout Portofolio -->
+    <div class="container">
+        
+        <!-- Bagian Kiri: Identitas Diri -->
+        <aside class="profile-sidebar">
+            <!-- Silakan ganti src dengan foto Anda sendiri -->
+            <img src="./img/me.jpg" alt="Foto Profil" class="profile-img">
+            <h2>Toni Perkasa Darmawan</h2>
+            <p>Mahasiswa Teknik Informatika / Web Developer</p>
+            
+            <div class="contact-info">
+                <p><strong>Email:</strong> 252310062@student.ibik.ac.id</p>
+                <p><strong>Lokasi:</strong> Jakarta, Indonesia</p>
+                <p><strong>GitHub:</strong> github.com/DyingAstronaut</p>
+            </div>
+        </aside>
+
+        <!-- Bagian Kanan: Detail Portofolio -->
+        <section class="portfolio-content">
+            
+            <!-- Tentang Saya -->
+            <div class="card">
+                <h3>Tentang Saya</h3>
+                <p>
+                    Halo! Saya adalah seorang mahasiswa yang memiliki ketertarikan besar di bidang teknologi informasi. 
+                    Saya fokus mempelajari pengembangan sistem perangkat lunak, arsitektur basis data, serta analisis data. 
+                    Saya selalu antusias untuk belajar hal baru dan merancang solusi teknis yang efisien.
+                </p>
+            </div>
+
+            <!-- Keahlian -->
+            <div class="card">
+                <h3>Keahlian & Teknologi</h3>
+                <ul class="skills-list">
+                    <li>HTML & CSS</li>
+                    <li>Python</li>
+                    <li>PostgreSQL</li>
+                    <li>Pengembangan Game (Luau)</li>
+                    <li>Software Testing</li>
+                </ul>
+            </div>
+
+            <!-- Proyek Terkini -->
+            <div class="card">
+                <h3>Pengalaman / Proyek Terkini</h3>
+                <ul>
+                    <li><strong>Sistem Informasi Berbasis Web:</strong> Membangun desain antarmuka pengguna dan merancang arsitektur microservices untuk portal pengguna.</li>
+                    <li><strong>Data Analysis:</strong> Melakukan proses pembersihan data (data cleaning) dan analisis data mentah untuk menghasilkan informasi yang terstruktur.</li>
+                    <li><strong>Pengujian Perangkat Lunak:</strong> Menguji *Software Testing Life Cycle* (STLC) untuk memastikan kualitas layanan web aplikasi.</li>
+                </ul>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        Copyright &copy; Toni Perkasa Darmawan 2026
+    </footer>
+
+</body>
+</html>
