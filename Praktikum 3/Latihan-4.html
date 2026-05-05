@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 4 - Simulasi Tabungan</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #27ae60;
+            border-bottom: 2px solid #27ae60;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            margin-top: 15px;
+        }
+        td {
+            padding: 8px 0;
+        }
+        .label-col {
+            width: 35%;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn-group {
+            margin-top: 20px;
+            text-align: center;
+        }
+        input[type="button"], input[type="reset"] {
+            padding: 10px 20px;
+            margin: 0 5px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            border: none;
+        }
+        input[type="button"] {
+            background-color: #27ae60;
+            color: white;
+        }
+        input[type="reset"] {
+            background-color: #7f8c8d;
+            color: white;
+        }
+        #areaHasil {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #eafaf1;
+            border-left: 4px solid #27ae60;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #2c3e50;
+            display: none; /* Hide sebelum ada hasil */
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script language="JavaScript">
+        function hitungTabungan() {
+            // Input berdasarkan ID
+            var saldo = parseFloat(document.getElementById("inSaldo").value);
+            var bunga = parseFloat(document.getElementById("inBunga").value);
+            var waktu = parseInt(document.getElementById("inWaktu").value);
+            
+            if (isNaN(saldo) || isNaN(bunga) || isNaN(waktu) || saldo < 0 || waktu < 1) {
+                alert("Mohon masukkan data angka yang valid dan positif!");
+                return;
+            }
+
+            var hasilText = "<strong>Hasil Perhitungan:</strong><br><br>";
+            
+            // Hitung saldo per bulan
+            for (var i = 1; i <= waktu; i++) {
+                var nominalBunga = saldo * (bunga / 100);
+                
+                saldo = saldo + nominalBunga;
+                
+                hasilText += "Saldo Bulan " + i + " = Rp. " + saldo.toFixed(0) + "<br>";
+            }
+
+            // Menampilkan hasil ke dalam div areaHasil menggunakan DOM innerHTML
+            var elemenHasil = document.getElementById("areaHasil");
+            elemenHasil.innerHTML = hasilText;
+            elemenHasil.style.display = "block"; // Menampilkan kotak hasil
+        }
+
+        // Hide hasil saat tombol reset ditekan
+        function resetForm() {
+            var elemenHasil = document.getElementById("areaHasil");
+            elemenHasil.innerHTML = "";
+            elemenHasil.style.display = "none";
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Simulasi Saldo Tabungan</h2>
+    
+    <!-- Form Input Data -->
+    <form name="formTabungan">
+        <table>
+            <tr>
+                <td class="label-col">Saldo Awal</td>
+                <td>: <input type="number" id="inSaldo" placeholder="Contoh: 100000"></td>
+            </tr>
+            <tr>
+                <td class="label-col">Bunga (%)</td>
+                <td>: <input type="number" id="inBunga" placeholder="Contoh: 10"></td>
+            </tr>
+            <tr>
+                <td class="label-col">Waktu (Bulan)</td>
+                <td>: <input type="number" id="inWaktu" placeholder="Contoh: 3"></td>
+            </tr>
+        </table>
+
+        <!-- Button -->
+        <div class="btn-group">
+            <input type="button" value="Hitung" onclick="hitungTabungan()">
+            <input type="reset" value="Reset" onclick="resetForm()">
+        </div>
+    </form>
+
+    <!-- Output DOM innerHTML -->
+    <div id="areaHasil"></div>
+</div>
+
+</body>
+</html>

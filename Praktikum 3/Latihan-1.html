@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 1 - Form Input Biodata</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #444;
+            margin-top: 25px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        table {
+            width: 100%;
+        }
+        td {
+            padding: 8px 0;
+            vertical-align: top;
+        }
+        .label-col {
+            width: 30%;
+            font-weight: bold;
+        }
+        input[type="text"], select, textarea {
+            width: 90%;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn-group {
+            margin-top: 20px;
+            text-align: center;
+        }
+        input[type="button"], input[type="reset"] {
+            padding: 10px 20px;
+            margin: 0 5px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            border: none;
+        }
+        input[type="button"] {
+            background-color: #28a745;
+            color: white;
+        }
+        input[type="reset"] {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+
+    <!-- JavaScript untuk proses form -->
+    <script language="JavaScript">
+        function prosesKirim() {
+            var form = document.biodataForm;
+
+            var nim = form.nim.value;
+            var nama = form.nama.value;
+            var komentar = form.komentar.value;
+
+            var agama = form.agama.value;
+            var jurusan = form.jurusan.value;
+
+            // Mengambil nilai dari jenis kelamin
+            var jk = "";
+            if (form.jk[0].checked == true) {
+                jk = "Pria";
+            } else if (form.jk[1].checked == true) {
+                jk = "Wanita";
+            }
+
+            // Mengambil nilai status pernikahan
+            var status = "";
+            if (form.status[0].checked == true) {
+                status = "Belum Menikah";
+            } else if (form.status[1].checked == true) {
+                status = "Menikah";
+            }
+
+            // assign nilai ke output
+            form.o_nim.value = nim;
+            form.o_nama.value = nama;
+            form.o_jk.value = jk;
+            form.o_agama.value = agama;
+            form.o_status.value = status;
+            form.o_jurusan.value = jurusan;
+            form.o_komentar.value = komentar;
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Form Biodata Mahasiswa</h2>
+    
+    <!-- Form utama -->
+    <form name="biodataForm">
+        
+        <!-- Input Data -->
+        <h3>Input Data</h3>
+        <table>
+            <tr>
+                <td class="label-col">NIM</td>
+                <td>: <input type="text" name="nim"></td>
+            </tr>
+            <tr>
+                <td class="label-col">Nama</td>
+                <td>: <input type="text" name="nama"></td>
+            </tr>
+            <tr>
+                <td class="label-col">Jenis Kelamin</td>
+                <td>: 
+                    <input type="radio" name="jk" value="Pria"> Pria
+                    <input type="radio" name="jk" value="Wanita"> Wanita
+                </td>
+            </tr>
+            <tr>
+                <td class="label-col">Agama</td>
+                <td>: 
+                    <select name="agama">
+                        <option value="Islam">Islam</option>
+                        <option value="Kristen Protestan">Kristen Protestan</option>
+                        <option value="Kristen Katolik">Kristen Katolik</option>
+                        <option value="Hindu">Hindu</option>
+                        <option value="Buddha">Buddha</option>
+                        <option value="Konghucu">Konghucu</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-col">Status</td>
+                <td>: 
+                    <input type="radio" name="status" value="Belum Menikah"> Belum Menikah
+                    <input type="radio" name="status" value="Menikah"> Menikah
+                </td>
+            </tr>
+            <tr>
+                <td class="label-col">Jurusan</td>
+                <td>: 
+                    <select name="jurusan">
+                        <option value="S1 Teknologi Informasi">S1 Teknologi Informasi</option>
+                        <option value="S1 Pariwisata">S1 Pariwisata</option>
+                        <option value="Teknik Industri">Teknik Industri</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-col">Komentar</td>
+                <td>: <br><textarea name="komentar" rows="3"></textarea></td>
+            </tr>
+        </table>
+
+        <!-- Buttons -->
+        <div class="btn-group">
+            <input type="button" value="KIRIM" onclick="prosesKirim()">
+            <input type="reset" value="ULANG">
+        </div>
+
+        <!-- Bagian Output Data -->
+        <h3>Output Data</h3>
+        <table>
+            <tr>
+                <td class="label-col">NIM</td>
+                <td>: <input type="text" name="o_nim" readonly></td>
+            </tr>
+            <tr>
+                <td class="label-col">Nama</td>
+                <td>: <input type="text" name="o_nama" readonly></td>
+            </tr>
+            <tr>
+                <td class="label-col">Jenis Kelamin</td>
+                <td>: <input type="text" name="o_jk" readonly></td>
+            </tr>
+            <tr>
+                <td class="label-col">Agama</td>
+                <td>: <input type="text" name="o_agama" readonly></td>
+            </tr>
+            <tr>
+                <td class="label-col">Status</td>
+                <td>: <input type="text" name="o_status" readonly></td>
+            </tr>
+            <tr>
+                <td class="label-col">Jurusan</td>
+                <td>: <input type="text" name="o_jurusan" readonly></td>
+            </tr>
+            <tr>
+                <td class="label-col">Komentar</td>
+                <td>: <br><textarea name="o_komentar" rows="3" readonly></textarea></td>
+            </tr>
+        </table>
+
+    </form>
+</div>
+
+</body>
+</html>

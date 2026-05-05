@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 3 - Faktorial dan Deret</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #8e44ad;
+            border-bottom: 2px solid #8e44ad;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+        td {
+            padding: 10px 0;
+        }
+        .label-col {
+            width: 40%;
+            font-weight: bold;
+        }
+        input[type="number"], input[type="text"] {
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn-group {
+            margin-top: 20px;
+            text-align: center;
+        }
+        input[type="button"], input[type="reset"] {
+            padding: 10px 20px;
+            margin: 0 5px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            border: none;
+        }
+        input[type="button"] {
+            background-color: #2980b9;
+            color: white;
+        }
+        input[type="reset"] {
+            background-color: #c0392b;
+            color: white;
+        }
+        .output-box {
+            background-color: #f9ebea;
+            color: #c0392b;
+            font-weight: bold;
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script language="JavaScript">
+        function hitungFaktorialDanDeret() {
+            var form = document.formHitung;
+            
+            // Input N
+            var n = parseInt(form.nilaiN.value);
+
+            var faktorial = 1;
+            var jumlah = 0;
+
+            // Hitung Faktorial
+            for (var i = 1; i <= n; i++) {
+                faktorial = faktorial * i;
+                jumlah = jumlah + i;
+            }
+
+            if (n === 0) {
+                faktorial = 1;
+                jumlah = 0;
+            }
+
+            // Print Output
+            form.hasilFaktorial.value = faktorial;
+            form.hasilJumlah.value = jumlah;
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h2>PERHITUNGAN<br>FAKTORIAL dan DERET</h2>
+    
+    <form name="formHitung">
+        <table>
+            <!-- Form Input -->
+            <tr>
+                <td class="label-col">Nilai N</td>
+                <td>: <input type="number" name="nilaiN" min="0" placeholder="Masukkan N"></td>
+            </tr>
+            
+            <!-- Form Output 1 -->
+            <tr>
+                <td class="label-col">Hasil Faktorial</td>
+                <td>: <input type="text" name="hasilFaktorial" class="output-box" readonly></td>
+            </tr>
+            
+            <!-- Form Output 2 -->
+            <tr>
+                <td class="label-col">Jumlah Deret</td>
+                <td>: <input type="text" name="hasilJumlah" class="output-box" readonly></td>
+            </tr>
+        </table>
+
+        <!-- Button -->
+        <div class="btn-group">
+            <input type="button" value="Submit" onclick="hitungFaktorialDanDeret()">
+            <input type="reset" value="Reset">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
